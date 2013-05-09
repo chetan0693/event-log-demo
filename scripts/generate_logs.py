@@ -80,7 +80,7 @@ def main():
     print current_time.strftime("%Y-%m-%dT%H:%M:%S")
     while  datetime.now() > current_time:
         generate_log(current_time.strftime("%Y-%m-%dT%H:%M:%S"),concurrent_connection(options.legal),"SUCCESS") 
-        if attack_time > current_time:
+        if attack_time < current_time:
 	    generate_log(current_time.strftime("%Y-%m-%dT%H:%M:%S"),concurrent_connection(options.ddos),"ERROR")
         current_time = current_time+timedelta(minutes=(options.increment))
     #legit_user = concurrent_connection(options.legal)
