@@ -36,7 +36,7 @@ def generate_log(timestamp,users,status):
     for country, concurrent_user in countries.iteritems():
         i = 0
         while i < concurrent_user :
-            logging.info('%s;%s;%s;%s'%(timestamp, random_ip(), country, status))
+            logging.info('%s|%s|%s|%s'%(timestamp, random_ip(), country, status))
             i += 1 
 #    logging.debug('This message should go to the log file')
 #    logging.info('%s:%s:So should this'%(timestamp, random_ip(), country))
