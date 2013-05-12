@@ -1,0 +1,28 @@
+sandbox.sources = access_log
+sandbox.channels = mem_channel
+sandbox.sinks = sink_to_hdfs
+
+# Define / Configure source
+sandbox.sources.access_log.type = exec
+sandbox.sources.access_log.command = tail -F /var/log/eventlog-demo.log
+#sandbox.sources.access_log.type = seq
+
+# HDFS sinks
+sandbox.sinks.sink_to_hdfs.type = hdfs
+sandbox.sinks.sink_to_hdfs.hdfs.fileType = DataStream
+sandbox.sinks.sink_to_hdfs.hdfs.path = /flume/events
+sandbox.sinks.sink_to_hdfs.hdfs.filePrefix = access_log
+sandbox.sinks.sink_to_hdfs.hdfs.fileSuffix = .log 
+sandbox.sinks.sink_to_hdfs.hdfs.batchSize = 250 
+
+# Use a channel which buffers events in memory
+sandbox.channels.mem_channel.type = memory
+sandbox.channels.mem_channel.capacity = 250
+
+
+# Bind the source and sink to the channel
+sandbox.sources.access_log.channels = mem_channel
+sandbox.sinks.sink_to_hdfs.channel = mem_channel
+
+
+
