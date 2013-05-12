@@ -21,9 +21,8 @@ sandbox.sinks.sink_to_hdfs.roundUnit = minute
 # ElasticSearch Sinks
 sandbox.sinks.sink_to_elasticSearch.type = org.apache.flume.sink.elasticsearch.ElasticSearchSink 
 sandbox.sinks.sink_to_elasticSearch.hostNames = 192.168.56.102:9200 192.168.56.102:9300
-sandbox.sinks.sink_to_elasticSearch.indexName = logstash
-sandbox.sinks.sink_to_elasticSearch.indexType = weblog 
-#sandbox.sinks.sink_to_elasticSearch.indexType = ubs
+sandbox.sinks.sink_to_elasticSearch.indexName = eventlog
+sandbox.sinks.sink_to_elasticSearch.indexType = demo
 sandbox.sinks.sink_to_elasticSearch.clusterName = elasticsearch 
 sandbox.sinks.sink_to_elasticSearch.batchSize = 100 
 sandbox.sinks.sink_to_elasticSearch.ttl = 5 
