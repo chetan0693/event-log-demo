@@ -19,6 +19,7 @@ def read_options():
     parser.add_option("-s", "--start-ddos", dest="start", help="Start DDoS after X hours. Default=24H", default="24", type="int")
     parser.add_option("-d", "--ddos-connection", dest="ddos", help="How many DDoS connection. Default=10000", default="10000", type="int")
     parser.add_option("-i", "--increment", dest="increment", help="Generate logs every X minutes. Default=5min", default="5", type="int")
+    parser.add_option("-f", "--logfile", dest="logfile", help="Specify a log file. Default=/var/log/eventlog-demo.log", default="/var/log/eventlog-demo.log", type="string")
     (options, args) = parser.parse_args()
     return options
 
@@ -28,8 +29,8 @@ def timestamp():
     return timestamp
 
 
-def generate_log(timestamp,users,status):
-    logging.basicConfig(filename='/var/log/eventlog-demo.log',
+def generate_log(timestamp,users,status,logfile):
+    logging.basicConfig(filename=logfile,
                         format='%(message)s',
                         level=logging.DEBUG)
     countries = weight_country(users)
@@ -79,9 +80,9 @@ def main():
     attack_time = current_time + timedelta(hours=options.start)
     print current_time.strftime("%Y-%m-%dT%H:%M:%S")
     while  datetime.now() > current_time:
-        generate_log(current_time.strftime("%Y-%m-%dT%H:%M:%S"),concurrent_connection(options.legal),"SUCCESS") 
+        generate_log(current_time.strftime("%Y-%m-%dT%H:%M:%S"),concurrent_connection(options.legal),"SUCCESS",options.logfile) 
         if attack_time < current_time:
-	    generate_log(current_time.strftime("%Y-%m-%dT%H:%M:%S"),concurrent_connection(options.ddos),"ERROR")
+	    generate_log(current_time.strftime("%Y-%m-%dT%H:%M:%S"),concurrent_connection(options.ddos),"ERROR",options.logfile)
         current_time = current_time+timedelta(minutes=(options.increment))
     #legit_user = concurrent_connection(options.legal)
     #ip = random_ip()
