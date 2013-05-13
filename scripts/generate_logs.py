@@ -52,7 +52,7 @@ def WeightedPick(d):
     return k
 
 def weight_good_country(user):
-    countries = {'US':60,'UK':20,'DE':15,'FR':5}
+    countries = {'US':60,'GB':20,'DE':15,'FR':5}
     results = {}
     for x in xrange(user):
         p = WeightedPick(countries)
