@@ -14,7 +14,7 @@ from datetime import timedelta, date, time, datetime
 
 def read_options():
     parser = OptionParser()
-    parser.add_option("-t", "--time", dest="duration", help="Generate logs for X Hours. Default=240H ( 10 days)", default="240", type="int")
+    parser.add_option("-t", "--time", dest="duration", help="Generate logs for X Hours. Default=48H ( 2 days)", default="48", type="int")
     parser.add_option("-l", "--legit-connection", dest="legal", help="How many legal users are connecting. Default=1000", default="1000", type="int")
     parser.add_option("-s", "--start-ddos", dest="start", help="Start DDoS after X hours. Default=24H", default="24", type="int")
     parser.add_option("-d", "--ddos-connection", dest="ddos", help="How many DDoS connection. Default=10000", default="10000", type="int")
