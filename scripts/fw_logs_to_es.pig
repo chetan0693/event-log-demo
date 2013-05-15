@@ -1,4 +1,4 @@
-REGISTER /usr/local/event-log-demo-0.1/elasticsearch-hadoop-1.0.0.PATCH.jar;
+REGISTER /usr/local/event-log-demo-0.2/elasticsearch-hadoop-1.0.0.PATCH.jar;
 
 RAW = LOAD 'FIREWALL_LOGS' USING org.apache.hcatalog.pig.HCatLoader();
 
