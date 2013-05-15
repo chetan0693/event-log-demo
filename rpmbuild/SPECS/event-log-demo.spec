@@ -1,6 +1,6 @@
 Name:		event-log-demo
 Version:	0.2
-Release:	1%{?dist}
+Release:	2%{?dist}
 Summary:	Install ElasticSearch + Kibana and configure them to work with Hortonworks Sandbox
 
 Group:		Development/Tools
@@ -22,6 +22,7 @@ rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/local/event-log-demo-0.2
 mkdir -p %{buildroot}/usr/local/bin
 cp -ax . %{buildroot}/usr/local/event-log-demo-0.2
+cp -ax generate_logs.py %{buildroot}/usr/local/bin
 cp -ax start_kibana.sh %{buildroot}/usr/local/bin
 cp -ax start_flume.sh %{buildroot}/usr/local/bin
 cp -ax clean_event_log_demo.sh %{buildroot}/usr/local/bin
@@ -46,7 +47,9 @@ cp -ax /usr/local/event-log-demo-0.2/flume.conf /etc/flume/conf/flume.conf
 cp -ax /usr/local/event-log-demo-0.2/flume-log4j.properties /etc/flume/conf/log4j.properties
 
 %changelog
-* Wed May 15 2013 Olivier Renault <orenault@hortonworks.com> - 0.2
+* Wed May 15 2013 Olivier Renault <orenault@hortonworks.com> - 0.2-2
+- Move python script to /usr/local/bin and make it executable
+* Wed May 15 2013 Olivier Renault <orenault@hortonworks.com> - 0.2-1
 - Update to FW Log 
-* Tue May 07 2013 Olivier Renault <orenault@hortonworks.com> - 0.1
+* Tue May 07 2013 Olivier Renault <orenault@hortonworks.com> - 0.1-1
 - Initial RPM version
